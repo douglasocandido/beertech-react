@@ -1,10 +1,10 @@
 export default class CustomPlayer {
-    constructor(width, height, deaultErrorMessage, controls=true) {
+    constructor(width, height, deaultErrorMessage, controls=true, sources="") {
         this.width = width;
         this.height = height;
         this.deaultErrorMessage = deaultErrorMessage;
-        this.sources = '';
         this.controls = controls;
+        this.sources = sources;
     }
 
     setSources(sourcesSettings) {
