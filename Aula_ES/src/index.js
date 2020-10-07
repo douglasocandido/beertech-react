@@ -1,5 +1,9 @@
-import {  } from "./components/Cliente";
+import CustomPlayer from "./components/CustomPlayer.js";
 
-const teste1 = new Cliente("Leonardo", "Tumadjian"); // instância
+const video = new CustomPlayer(320, 240, "Your browser does not support the video tag.");
+video.setSources([
+    {src: "movie.mp4", type: "video/mp4"},
+    {src: "movie.ogg", type: "video/ogg"}
+]);
 
-console.log(teste1);
+const render = video.render("MyPlayerId");
