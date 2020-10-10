@@ -1,10 +1,10 @@
 import React from 'react';
-import UsersColletcion from './Components/UsersCollection'
+import UsersColletcion from './Components/UsersCollection';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import './index.css';
-
+import Header from './Components/Header';
 //inicio - estilização Material-UI
 
 //fim - estidlização Material-UI
@@ -16,6 +16,7 @@ function App() {
     <div className="App">
     <main>
     <Container maxWidth="sm">
+    <Header />
     <Grid container spacing={2} justify="center">
     <UsersColletcion />
     </Grid>
