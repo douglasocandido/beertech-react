@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
 import UserList from './UserList'
 import APIService from '../Services/APIService'
 import IUsers from '../Interfaces/IUsers'
@@ -51,7 +52,11 @@ export default class UsersCollection extends Component<IUsersCollectionProps, IU
         return (
             <div>
                 <input type="search" onChange={event => this.searchUser(event.target.value)} placeholder="Digite o nome do usuário" />
-                <UserList users={this.state.selectedUsers}/>
+                <Grid container spacing={4}>
+                    <Grid container item xs={12} spacing={3}>
+                    <UserList users={this.state.selectedUsers}/>
+                    </Grid>
+                </Grid>
             </div>
         )
     }

@@ -1,14 +1,19 @@
-input{
-    margin : 2.5rem;
-    width : 30rem;
-    height : 2.5rem;
-    padding : 0.5rem;
-    font-size : large;
+input {
+  margin: 2.5rem;
+  width: 30rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  font-size: large;
 }
 
-footer{
-    background-color: #fed8b1;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+footer {
+  background-color: #fed8b1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  flex-wrap: nowrap;
 }
