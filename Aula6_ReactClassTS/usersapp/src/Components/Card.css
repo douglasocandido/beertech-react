@@ -1,0 +1,10 @@
+
+    .card_container {
+        width: '100px' !important;  
+        height: '100px'!important; 
+        padding: 32;     
+        justify-content: 'center';     
+        align-items: 'center';   
+        display: 'inline-flex';     
+        flex-direction: 'column';     
+        }
