@@ -10,7 +10,7 @@ export default class UsersCollection extends Component {
     render() {
         return (
             <div>
-                <input type="search" onChange={event => this.searchUser(event.target.value)} placeholder="Digite o nome do usuário" />
+                <input className ='search' type="search" onChange={event => this.searchUser(event.target.value)} placeholder="Digite o nome do usuário" />
                 
             </div>
         )
