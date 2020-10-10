@@ -11,7 +11,7 @@ export default class UsersCollection extends Component {
         return (
             <div>
                 <input type="search" onChange={event => this.searchUser(event.target.value)} placeholder="Digite o nome do usuário" />
-                <UserList users={[]}/>
+                
             </div>
         )
     }
