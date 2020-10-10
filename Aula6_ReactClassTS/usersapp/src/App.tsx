@@ -18,7 +18,7 @@ function App() {
     <main>
     <Container maxWidth="sm">
     <Header />
-    <Grid container spacing={2} justify="center">
+    <Grid container spacing={5} justify="center">
     <UsersColletcion />
     </Grid>
     </Container>

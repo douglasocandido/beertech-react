@@ -13,15 +13,12 @@ export default class UsersList extends Component<IUserListProps> {
     }
 
     render() {
-        return <CardCollection/>
-
         const users = this.props.users
-        let userList = ''
-        users.forEach(userElement => {
-            userList += userElement.name
-        });
-        return userList
-        
+        let cardList = []
+        for(let i = 0; i < users.length; i++) {
+            cardList.push(<CardCollection key={users[i].id} user={users[i]} />)
+        }
+        return cardList
     }
 
 }

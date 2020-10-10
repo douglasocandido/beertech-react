@@ -2,32 +2,36 @@ import React, { Component } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './Card.css';
+import User from '../Repository/User'
+
 
 interface ICardProps {
-    render: () => Readonly<ICardProps> ;
+    user: User
 
 }
 
-export default class CardCollection extends Component{
-
+export default class CardCollection extends Component<ICardProps>{
+    constructor(props: ICardProps) {
+        super(props);
+       }
     render(){
-        
+        const {name, address, email, id } = this.props.user
+        const completeAddress = `${address?.street}, ${address?.suite}, ${address?.city} - ${address?.zipcode}`
         return (
-            <Card className="card_container" >
+            <Card className="cardContainer">
                 <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            
+                            {id} - {name} 
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
+                           {email}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                           {completeAddress}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
