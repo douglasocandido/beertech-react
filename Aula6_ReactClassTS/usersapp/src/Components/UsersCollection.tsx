@@ -29,7 +29,8 @@ export default class UsersCollection extends Component<IUsersCollectionProps, IU
         const apiService: APIService = new APIService(new AxiosHandler());
         apiService.getUsers().then((users: IUsers) => {
             this.setState({
-                usersData : users.data
+                usersData : users.data,
+                selectedUsers: users.data
             });
         });
     }
