@@ -5,3 +5,10 @@ input{
     padding : 0.5rem;
     font-size : large;
 }
+
+footer{
+    background-color: lightgrey;
+    position : absolute;
+    bottom : 0;
+    width : 100%;
+}
