@@ -11,4 +11,13 @@ export default class UsersList extends Component<IUserListProps> {
         super(props)
     }
 
+    render() {
+        const users = this.props.users
+        let userList = ''
+        users.forEach(userElement => {
+            userList += userElement.name
+        });
+        return userList
+    }
+
 }
