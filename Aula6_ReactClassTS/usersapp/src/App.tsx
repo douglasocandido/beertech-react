@@ -1,4 +1,5 @@
 import React from 'react';
+import UsersColletcion from './Components/UsersCollection'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
     <main>
     <Container maxWidth="sm">
-      {/* Conteudo aqui da página aqui */}
+      <UsersColletcion />
     </Container>
     </main>
     </div>
