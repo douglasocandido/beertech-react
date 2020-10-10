@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import './index.css';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 //inicio - estilização Material-UI
 
 //fim - estidlização Material-UI
@@ -22,6 +23,7 @@ function App() {
     </Grid>
     </Container>
     </main>
+    <Footer />
     </div>
     </>
     );
