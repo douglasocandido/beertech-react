@@ -39,11 +39,15 @@ export default class UsersCollection extends Component<{}, IUsersCollectionState
         });
     }
 
+    normalizeTextToSearch(searchText: string) {
+        return searchText.normalize("NFD").replace(/[^a-zA-Zs]/g, "").toLocaleLowerCase();
+    }
+
     searchUser(searchString: string) {
         const users = this.state.usersData
         let filteredUsers = [];
         for(let i = 0; i < users.length; i++) {
-            if(users[i].name.indexOf(searchString) !== -1) {
+            if(this.normalizeTextToSearch(users[i].name).indexOf(this.normalizeTextToSearch(searchString)) !== -1) {
                 filteredUsers.push(users[i])
             }
         }
