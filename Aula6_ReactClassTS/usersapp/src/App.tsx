@@ -1,28 +1,23 @@
 import React from 'react';
-import UsersColletcion from './Components/UsersCollection';
-import Grid from '@material-ui/core/Grid';
+import UsersCollection from './Components/UsersCollection';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import './index.css';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-//inicio - estilização Material-UI
-
-//fim - estidlização Material-UI
+import Header from './Components/Header/';
+import Footer from './Components/Footer/';
 
 function App() {
   return (
-    <>
-    <CssBaseline />
     <div className="App">
-    <main>
-    <Container max-maxWidth='xl'>
-    <Header />
-    <UsersColletcion />
-    </Container>
-    </main>
+      <CssBaseline />
+      <main className="main-wrapper">
+        <Container maxWidth='xl'>
+          <Header />
+          <UsersCollection />
+        </Container>
+      </main>
+      <Footer/>
     </div>
-    </>
     );
   }
   
