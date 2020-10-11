@@ -10,10 +10,13 @@ export default class SearchInput extends Component<SearchInputProps> {
     
     render() {
         return (
-            <input type="search" 
-            onChange={event => this.props.searchUser(event.target.value)}
-             placeholder="Digite o nome do usuário" />
-            );
-        }
+            <input 
+                type="search"
+                className="search-input" 
+                onChange={event => this.props.searchUser(event.target.value)}
+                placeholder="Digite o nome do usuário"
+             />
+        );
+    }
         
     }
