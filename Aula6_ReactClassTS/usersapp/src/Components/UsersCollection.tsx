@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import CardsList from './CardsList'
+import CardsList from "./CardsList/index"
 import APIService from '../Services/APIService'
 import IUsers from '../Interfaces/IUsers'
 import AxiosHandler from '../Services/AxiosHandler'

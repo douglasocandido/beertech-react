@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import User from "../Repository/User";
-import Card from "./Card"
+import User from "../../Repository/User";
+import Card from "../Card"
 
 interface CardsListProps {
     users: User[]
@@ -15,5 +15,4 @@ export default class CardsList extends Component<CardsListProps> {
         }
         return cardsList
     }
-
 }
