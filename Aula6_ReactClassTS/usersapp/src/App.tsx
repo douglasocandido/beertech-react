@@ -16,14 +16,11 @@ function App() {
     <CssBaseline />
     <div className="App">
     <main>
-    <Container maxWidth="sm">
+    <Container max-maxWidth='xl'>
     <Header />
-    <Grid container spacing={5} justify="center">
     <UsersColletcion />
-    </Grid>
     </Container>
     </main>
-    <Footer />
     </div>
     </>
     );
