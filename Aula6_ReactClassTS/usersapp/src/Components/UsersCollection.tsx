@@ -1,29 +1,30 @@
 import React, { Component } from "react";
 import Grid from '@material-ui/core/Grid';
-import UserList from './UserList'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import CardsList from './CardsList'
 import APIService from '../Services/APIService'
 import IUsers from '../Interfaces/IUsers'
 import AxiosHandler from '../Services/AxiosHandler'
 import User from '../Repository/User'
+import SearchInput from "../Components/SearchInput/"
 
 
 interface IUsersCollectionState {
     usersData: User[]
     selectedUsers: User[]
+    isLoading: boolean
 }
 
-interface IUsersCollectionProps {
 
-}
+export default class UsersCollection extends Component<{}, IUsersCollectionState> {
 
-export default class UsersCollection extends Component<IUsersCollectionProps, IUsersCollectionState> {
-
-    constructor(props: IUsersCollectionProps) {
+    constructor(props:{}) {
         super(props);
-
         this.state = {
             usersData : [],
-            selectedUsers : []
+            selectedUsers : [],
+            isLoading: true
         }
     }
 
@@ -32,7 +33,8 @@ export default class UsersCollection extends Component<IUsersCollectionProps, IU
         apiService.getUsers().then((users: IUsers) => {
             this.setState({
                 usersData : users.data,
-                selectedUsers: users.data
+                selectedUsers: users.data,
+                isLoading:false
             });
         });
     }
@@ -50,14 +52,18 @@ export default class UsersCollection extends Component<IUsersCollectionProps, IU
 
     render() {
         return (
-            <div>
-                <input type="search" onChange={event => this.searchUser(event.target.value)} placeholder="Digite o nome do usuário" />
-                <Grid container spacing={4}>
-                    <Grid container item xs={12} spacing={3}>
-                    <UserList users={this.state.selectedUsers}/>
+            <>
+                <SearchInput searchUser={(event)=>this.searchUser(event)}/>
+                {this.state.isLoading ? 
+                    <div className="loading-spinner-wrapper">
+                        <CircularProgress /> 
+                    </div>
+                    : 
+                    <Grid  justify='center' alignItems= 'center' container spacing={4}>
+                        <CardsList users={this.state.selectedUsers}/>
                     </Grid>
-                </Grid>
-            </div>
+                }
+            </>
         )
     }
 
