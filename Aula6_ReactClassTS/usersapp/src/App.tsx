@@ -45,4 +45,3 @@ function App() {
   
   // Quando um componente é removido do DOM
   // componentWillUnmount()
-  
