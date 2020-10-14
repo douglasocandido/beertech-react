@@ -1,40 +1,76 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import OwnerItem from './components/OwnerItem';
+import AnimalItem from './components/AnimalItem';
+import ListContainer from './components/ListContainer';
 
-// import Animals from './apifake/Animals';
-// import Owners from './apifake/Owners';
+import IOwner from "./apifake/Interfaces/IOwner";
+import IAnimal from './apifake/Interfaces/IAnimal';
+import IOwnerItemProps from './interfaces/IOwnerItemProps'
+import IAnimalItemProps from './interfaces/IAnimalItemProps'
+
+import Animals from './apifake/Animals';
+import Owners from './apifake/Owners';
 
 import "./style.css";
 
-// chamadas de api fake
-// const owners: Owners = new Owners();
-// const animals: Animals = new Animals();
-
-// owners.getAll(); // retorna promise
-// animals.getByOwnerId(); // retorna promise
+const animals: Animals = new Animals();
+const owners: Owners = new Owners();
 
 function App() {
+  const [ownersList, setOwners] = useState<IOwnerItemProps[]>([]);
+  const [selectedOwnerId, setSelectedOwnerId] = useState(1)
+  const [ownerAnimals, setOwnerAnimals] = useState<IAnimalItemProps[]>([])
+  
+  useEffect(() => {
+    owners.getAll().then((ownersList:IOwner[]) => {
+      setOwners([...ownersList]);
+    });
+  },[]);
+
+  useEffect(() => {
+    animals.getByOwnerId(Number(selectedOwnerId)).then((animalsList: IAnimal[]) => {
+      setOwnerAnimals([...animalsList])
+    });
+  }, [selectedOwnerId]);
+
+  const handleSelectOnChange = (ownerId: string) => {
+    setSelectedOwnerId(Number(ownerId))
+  }
+
+  const handleButtonOnClick = () => {
+    renderOwnersReport(true)
+  }
+  
+  const renderOwnersReport = (ordered : boolean) => {
+
+    return (
+      <tbody>
+        {ownersList.map((owner : IOwnerItemProps) => 
+          <tr key={owner.id}>
+            <td>{owner.name}</td>
+            <td>0</td>
+          </tr>
+        )}
+      </tbody>
+    )
+  }
+
   return (
     <div className="App">
-      <section id="owners-section">
-        <label htmlFor="owners">Donos:</label>
-        <select id="owners">
-          <option value="1">Dono 1</option>
-          <option value="2">Dono 2</option>
-          <option value="3">Dono 3</option>
-          <option value="4">Dono 4</option>
+      <ListContainer elementId='owners' label='Donos'>
+        <select id="owners" onChange={changeEvent => handleSelectOnChange(changeEvent.target.value)}>
+          {ownersList.map((owner : IOwnerItemProps) => <OwnerItem key={owner.id} name={owner.name} id={owner.id} />)}
         </select>
-      </section>
-      <section id="animals-section">
-        <label htmlFor="animals">Animais:</label>
+      </ListContainer>
+
+      <ListContainer elementId='animals' label='Animais'>
         <select id="animals">
-          <option>Animal 1</option>
-          <option>Animal 2</option>
-          <option>Animal 3</option>
-          <option>Animal 4</option>
+          {ownerAnimals.map((animal : IAnimalItemProps) => <AnimalItem key={animal.id} name={animal.name}/>)}
         </select>
-      </section>
+      </ListContainer>
+
       <section id="report">
-        <button>Ordenar donos com mais animais</button>
+        <button onClick={() => handleButtonOnClick()}>Ordenar donos com mais animais</button>
         <table id="reportList">
           <thead>
             <tr>
@@ -42,20 +78,7 @@ function App() {
               <th>Quantidade</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Fulano 1</td>
-              <td>2 animais</td>
-            </tr>
-            <tr>
-              <td>Fulano 2</td>
-              <td>1 animal</td>
-            </tr>
-            <tr>
-              <td>Fulano 3</td>
-              <td>3 animais</td>
-            </tr>
-          </tbody>
+          {renderOwnersReport(false)}
         </table>
       </section>
     </div>
