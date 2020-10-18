@@ -28,4 +28,4 @@ const Comments = ({ messages }: ICommentsProps) => {
     );
 }
 
-export default Comments;
+export default React.memo(Comments);

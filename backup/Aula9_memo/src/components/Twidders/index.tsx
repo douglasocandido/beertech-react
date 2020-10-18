@@ -93,4 +93,4 @@ const Twidder = () => {
   );
 }
 
-export default Twidder;
+export default React.memo(Twidder);
